@@ -75,11 +75,11 @@ if(isset($_SESSION["username"])=="")
 							<table class="table table-bordered table-hover table-striped" id="tableuser">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Tel</th>
-										<th>Role</th>
+                                        <th><a class="sort" value="userid">ID</a></th>
+                                        <th><a class="sort" value="Name">Name</a></th>
+                                        <th><a class="sort" value="Email">Email</a></th>
+                                        <th><a class="sort" value="Tel">Tel</a></th>
+										<th><a class="sort" value="Role">Role</a></th>
 										<th>Manage</th>
                                     </tr>
                                 </thead>
@@ -88,6 +88,12 @@ if(isset($_SESSION["username"])=="")
                                 </tbody>
                             </table>
 						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6">
+						<div id="results"><!-- content will be loaded here --></div>
+						<input type="hidden" id="strOrderNow">
 						<input type="button" class="btn btn-default" value="Add User" id="btnAdd"> 
 					</div>
 				</div>

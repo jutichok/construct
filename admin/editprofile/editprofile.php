@@ -10,7 +10,7 @@ if(isset($_SESSION["username"])=="")
 	<?php
 }
 
-$userid = (isset($_GET['query_age']) ? $_GET['query_age'] : $_SESSION["userid"]);
+$userid = (isset($_GET['id']) ? $_GET['id'] : $_SESSION["userid"]);
 
 ?>
 
