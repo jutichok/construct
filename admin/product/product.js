@@ -1,13 +1,13 @@
 $( document ).ready(function() {
 	//initial
-	$('.fa.fa-fw.fa-user').parent().parent().attr("class","active");
+	$('.fa.fa-fw.fa-glass').parent().parent().attr("class","active");
 	
 	var pageval = 1;
-	var sortval = 'userid';
+	var sortval = 'prodid';
 	var orderval = 'desc';
 	doQuery(pageval,sortval,orderval);
 	$('#btnAdd').click(function(){
-		window.location = "/construct/admin/addUser/addUser.php";
+		window.location = "/construct/admin/addProduct/addProduct.php";
 	});
 	
 	$('.sort').click(function(){
@@ -24,6 +24,8 @@ $( document ).ready(function() {
 		doQuery(pageval,sortval,orderval);
 	});
 	
+	
+	
 });
 function reset(){
 	$("#tableuser").find("tbody").html('');
@@ -32,7 +34,7 @@ function reset(){
 
 function doQuery(pageval,sortval,orderval) {
 	$.ajax({
-		url: "user_p.php",
+		url: "product_p.php",
 		type: "POST",
 		data: 'page='+pageval+'&sort='+sortval+'&order='+orderval,//"{ page : '"+page+"', sort : '"+sort+"',order : '"+order+"' }",
 		success: function(data){ 
@@ -48,12 +50,13 @@ function doQuery(pageval,sortval,orderval) {
 			var html;
 			$xml.find("row").each(function(d){
 				html = "<tr>";
-				html += "<td>"+ $(this).find("userid").text() +"</td>";
-				html += "<td>"+ $(this).find("name").text() +"</td>";
-				html += "<td>"+ $(this).find("email").text() +"</td>";
-				html += "<td>"+ $(this).find("tel").text() +"</td>";
-				html += "<td>"+ $(this).find("role").text() +"</td>";
-				html += "<td><a href=/construct/admin/editprofile/editprofile.php?id="+$(this).find("userid").text()+">Edit</a> | <a href=/construct/admin/deleteuser/deleteuser.php?id="+$(this).find("userid").text()+">Delete</a></td>";
+				html += "<td>"+ $(this).find("prodid").text() +"</td>";
+				html += "<td>"+ $(this).find("prodname").text() +"</td>";
+				html += "<td>"+ $(this).find("price").text() +"</td>";
+				html += "<td>"+ $(this).find("qty").text() +"</td>";
+				html += "<td>"+ $(this).find("measure").text() +"</td>";
+				html += "<td>"+ $(this).find("prodtype").text() +"</td>";
+				html += "<td><a href=/construct/admin/editproduct/editproduct.php?id="+$(this).find("prodid").text()+">Edit</a> | <a href=/construct/admin/deleteproduct/deleteproduct.php?id="+$(this).find("prodid").text()+">Delete</a></td>";
 				html += "</tr>";
 				$("#tableuser").find("tbody").append(html);
 			});
