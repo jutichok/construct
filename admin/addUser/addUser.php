@@ -94,10 +94,8 @@ if(isset($_SESSION["username"])=="")
 						</div>
 						<div class="form-group">
 							<label>Role</label>
-							<select class="form-control" name="role">
-								<option value="1">ผู้ดูแลระบบ</option>
-								<option value="2">พนักงานทั่วไป</option>
-								<option value="3">ลูกค้า</option>
+							<select class="form-control" name="role" id="role">
+								
 							</select>
 						</div>
 						<div class="form-group">

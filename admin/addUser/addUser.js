@@ -1,6 +1,8 @@
 $( document ).ready(function() {
 	$("#username").focus();
 	
+	getRole();
+	
 	$("#addUser").submit(function() {
 		doSubmit(this);
 		return false;
@@ -10,6 +12,21 @@ $( document ).ready(function() {
         window.location = '/construct/admin/User/user.php';
     });
 });
+
+function getRole() {
+	$.ajax({
+		url: "addUser_q.php",
+		type: "POST",
+		data: "getrole=true",
+		success: function(data){ 
+			var xmldocs = $.parseXML(data);
+			$xml = $( xmldocs );
+			$xml.find('row').each(function(d){
+				$('#role').append("<option value="+$(this).find('groupid').text()+">"+$(this).find('groupname').text()+"</option>");
+			});
+		}
+	});
+}
 
 function doSubmit(aform) {
 	if(!chkNullValue()) {

@@ -5,10 +5,13 @@ if(isset($_SESSION["username"])=="")
 	?>
 	<script language = "javascript">
 		alert("Access Denied");
-		window.location.href = "/construct/admin/login/login.php";
+		window.location = "/construct/admin/login/login.php";
 	</script>
 	<?php
 }
+
+$prodid = (isset($_GET['id']) ? $_GET['id'] : "");
+
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +27,10 @@ if(isset($_SESSION["username"])=="")
     <title>Administrator Page</title>
 	
 	<!--Page CSS -->
-	<link href="addProductType.css" rel="stylesheet"/>
+	<link href="editpurchase.css" rel="stylesheet"/>
+	
+	<!--Jquery UI CSS -->
+	<link href="jquery-ui.min.css" rel="stylesheet"/>
 	
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -47,12 +53,15 @@ if(isset($_SESSION["username"])=="")
 	
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
+	
+	<!-- jQuery UI-->
+    <script src="jquery-ui.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
 	
 	<!-- js -->
-	<script type="text/javascript" src="addProductType.js"></script>
+	<script type="text/javascript" src="editpurchase.js"></script>
 	
 </head>
 
@@ -66,21 +75,46 @@ if(isset($_SESSION["username"])=="")
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
-						<h2 class="page-header">Add Product Type</h2>
+						<h2 class="page-header">Edit Purchase</h2>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-lg-8">
-						<form id="addProductType" method="post" action="addProductType_p.php">
+					<div class="col-lg-6">
+						<form id="editpurchaseform" method="post" action="editpurchase_p.php" role="form">
 							<div class="col-lg-6 clearl">
-								<label>Type Name</label>
-								<input class="form-control" type="text" class="textbox" id="ptname" name="ptname" placeholder="TYPE NAME">
+								<label>Product Name</label>
+								<input class="form-control" type="text" class="textbox" id="pname" name="pname" placeholder="PRODUCT NAME">
+							</div>
+							<div class="col-lg-6 clearl">
+								<label>Price</label>
+								<input class="form-control" type="text" class="textbox" id="price" name="price" placeholder="PRICE">
+							</div>
+							<div class="col-lg-6 clearl">
+								<label>Qty</label>
+								<input class="form-control" type="text" class="textbox" id="qty" name="qty" placeholder="QTY">
+							</div>
+							<div class="col-lg-6 clearl">
+								<label>Date</label>
+								<input class="form-control" type="text" class="textbox" id="datepicker" name="datepicker" placeholder="PURCHASE DATE">
+							</div>
+							<div class="col-lg-6 clearl">
+								<label>User</label>
+								<select class="form-control" name="userss" id="userss">
+								
+								</select>
+							</div>
+							<div class="col-lg-6 clearl">
+								<label>Status</label>
+								<select class="form-control" name="status" id="status">
+								
+								</select>
 							</div>
 							<div class="col-lg-8 underline"> &nbsp;</div>
 							<div class="col-lg-6 clearl">
-								<input class="btn btn-default" type="submit" value="Add Product Type" class="btn-style">
+								<input class="btn btn-default" type="submit" value="Edit Purchase" class="btn-style">
 								<input class="btn btn-default" type="button" value="Back" class="btn-style" id="back">
-							</div>						
+								<input type="hidden" id="prodid" name="prodid" value="<?php echo $prodid;?>">
+							</div>
 						</form>
 					</div>
 				</div>

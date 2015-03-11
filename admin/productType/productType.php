@@ -90,7 +90,7 @@ if(isset($_SESSION["username"])=="")
 				<div class="row">
 					<div class="col-lg-6">
 						<div id="results"><!-- content will be loaded here --></div>
-						<input type="hidden" id="strOrderNow">
+						<input type="hidden" id="strOrderNow"><br/>
 						<input type="button" class="btn btn-default" value="Add Product Type" id="btnAdd"> 
 					</div>
 				</div>

@@ -70,7 +70,7 @@ if(isset($_SESSION["username"])=="")
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-lg-6">
+					<div class="col-lg-8">
 						<form id="addProduct" method="post" action="addProduct_p.php">
 							<div class="col-lg-6 clearl">
 								<label>Product Name</label>
@@ -91,8 +91,7 @@ if(isset($_SESSION["username"])=="")
 							<div class="col-lg-6 clearl">
 								<label>Role</label>
 								<select class="form-control" name="role" id="role">
-									<option value="1">วัสดุก่อสร้าง</option>
-									<option value="2">วัสดุภายในอาคาร</option>
+									
 								</select>
 							</div>
 							<div class="col-lg-8 underline"> &nbsp;</div>

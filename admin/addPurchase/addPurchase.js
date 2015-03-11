@@ -1,28 +1,49 @@
 $( document ).ready(function() {
 	$("#pname").focus();
 	
-	QuerygetType();
+	getUser();
+	getStatus();
 	
-	$("#addProduct").submit(function() {
+	$( "#datepicker" ).datepicker({
+      showOtherMonths: true,
+      selectOtherMonths: true
+    });
+	
+	$("#addPurchase").submit(function() {
 		doSubmit(this);
 		return false;
     });
 
     $('#back').click(function () {
-        window.location = '/construct/admin/Product/Product.php';
+        window.location = '/construct/admin/Purchase/Purchase.php';
     });
 });
 
-function QuerygetType() {
+function getUser(){
 	$.ajax({
-		url: "addProduct_q.php",
+		url: "addPurchase_q.php",
 		type: "POST",
-		data: "getType=true",
+		data: "getUsers=true",
 		success: function(data){ 
 			var xmldocs = $.parseXML(data);
 			$xml = $( xmldocs );
 			$xml.find('row').each(function(d){
-				$('#role').append("<option value="+$(this).find('prodtypeid').text()+">"+$(this).find('prodtypename').text()+"</option>");
+				$('#userss').append("<option value="+$(this).find('userid').text()+">"+$(this).find('name').text()+"</option>");
+			});
+		}
+	});
+}
+
+function getStatus(){
+	$.ajax({
+		url: "addPurchase_q.php",
+		type: "POST",
+		data: "getStatus=true",
+		success: function(data){ 
+			var xmldocs = $.parseXML(data);
+			$xml = $( xmldocs );
+			$xml.find('row').each(function(d){
+				$('#status').append("<option value="+$(this).find('statusid').text()+">"+$(this).find('statusname').text()+"</option>");
 			});
 		}
 	});
@@ -34,7 +55,7 @@ function doSubmit(aform) {
 	}
 	//aform.submit();
 	$.ajax({
-		url: "addProduct_p.php",
+		url: "addPurchase_p.php",
 		type: "POST",
 		data: $(aform).serialize(), 
 		success: function(data){ 
@@ -75,9 +96,9 @@ function chkNullValue() {
 
 function locationPage(result) {
 	if(result == "Y") {
-		location.href = "/construct/admin/product/product.php";
+		location.href = "/construct/admin/Purchase/Purchase.php";
 	}
 	else {
-		location.href = "/construct/admin/addProduct/addProduct.php";
+		location.href = "/construct/admin/addPurchase/addPurchase.php";
 	}
 }

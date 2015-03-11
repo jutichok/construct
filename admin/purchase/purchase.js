@@ -1,13 +1,13 @@
 $( document ).ready(function() {
 	//initial
-	$('.fa.fa-bars').parent().parent().attr("class","active");
+	$('.fa.fa-exchange').parent().parent().attr("class","active");
 	
 	var pageval = 1;
-	var sortval = 'prodtypeid';
+	var sortval = 'purid';
 	var orderval = 'desc';
 	doQuery(pageval,sortval,orderval);
 	$('#btnAdd').click(function(){
-		window.location = "/construct/admin/addProductType/addProductType.php";
+		window.location = "/construct/admin/addPurchase/addPurchase.php";
 	});
 	
 	$('.sort').click(function(){
@@ -34,7 +34,7 @@ function reset(){
 
 function doQuery(pageval,sortval,orderval) {
 	$.ajax({
-		url: "productType_p.php",
+		url: "purchase_p.php",
 		type: "POST",
 		data: 'page='+pageval+'&sort='+sortval+'&order='+orderval,//"{ page : '"+page+"', sort : '"+sort+"',order : '"+order+"' }",
 		success: function(data){ 
@@ -50,9 +50,14 @@ function doQuery(pageval,sortval,orderval) {
 			var html;
 			$xml.find("row").each(function(d){
 				html = "<tr>";
-				html += "<td>"+ $(this).find("prodtypeid").text() +"</td>";
-				html += "<td style=\"text-align:left\">"+ $(this).find("prodtypename").text() +"</td>";
-				html += "<td><a href=/construct/admin/editproduct/editproduct.php?id="+$(this).find("prodtypeid").text()+">Edit</a> | <a href=/construct/admin/deleteproduct/deleteproduct.php?id="+$(this).find("prodtypeid").text()+">Delete</a></td>";
+				html += "<td>"+ $(this).find("purid").text() +"</td>";
+				html += "<td>"+ $(this).find("purname").text() +"</td>";
+				html += "<td>"+ $(this).find("purprice").text() +"</td>";
+				html += "<td>"+ $(this).find("purqty").text() +"</td>";
+				html += "<td>"+ $(this).find("createdate").text() +"</td>";
+				html += "<td>"+ $(this).find("user").text() +"</td>";
+				html += "<td>"+ $(this).find("statusname").text() +"</td>";
+				html += "<td><a href=/construct/admin/editPurchase/editPurchase.php?id="+$(this).find("purid").text()+">Edit</a> | <a href=/construct/admin/deletePurchase/deletePurchase.php?id="+$(this).find("purid").text()+">Delete</a></td>";
 				html += "</tr>";
 				$("#tableuser").find("tbody").append(html);
 			});

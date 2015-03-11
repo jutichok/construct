@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 	//initial
-	$('.fa.fa-fw.fa-glass').parent().parent().attr("class","active");
+	$('.fa.fa-bars').parent().parent().attr("class","active");
 	
 	var pageval = 1;
 	var sortval = 'prodid';

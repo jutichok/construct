@@ -24,7 +24,10 @@ if(isset($_SESSION["username"])=="")
     <title>Administrator Page</title>
 	
 	<!--Page CSS -->
-	<link href="user.css" rel="stylesheet"/>
+	<link href="addPurchase.css" rel="stylesheet"/>
+	
+	<!--Jquery UI CSS -->
+	<link href="jquery-ui.min.css" rel="stylesheet"/>
 	
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -47,12 +50,15 @@ if(isset($_SESSION["username"])=="")
 	
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
+	
+	<!-- jQuery UI-->
+    <script src="jquery-ui.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
 	
 	<!-- js -->
-	<script type="text/javascript" src="user.js"></script>
+	<script type="text/javascript" src="addPurchase.js"></script>
 	
 </head>
 
@@ -66,37 +72,46 @@ if(isset($_SESSION["username"])=="")
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
-						<h2 class="page-header">Manage User</h2>
+						<h2 class="page-header">Add Purchase</h2>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-lg-12">
-						<div class="table-responsive">
-							<table class="table table-bordered table-hover table-striped" id="tableuser">
-                                <thead>
-                                    <tr>
-                                        <th><a class="sort" value="userid">ID</a></th>
-                                        <th><a class="sort" value="Name">Name</a></th>
-                                        <th><a class="sort" value="Email">Email</a></th>
-                                        <th><a class="sort" value="Username">Username</a></th>
-                                        <th><a class="sort" value="Password">Password</a></th>
-                                        <th><a class="sort" value="Tel">Tel</a></th>
-										<th><a class="sort" value="Role">Role</a></th>
-										<th>Manage</th>
-                                    </tr>
-                                </thead>
-                                <tbody align=center>
-									
-                                </tbody>
-                            </table>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-6">
-						<div id="results"><!-- content will be loaded here --></div>
-						<input type="hidden" id="strOrderNow"><br/>
-						<input type="button" class="btn btn-default" value="Add User" id="btnAdd"> 
+					<div class="col-lg-8">
+						<form id="addPurchase" method="post" action="addPurchase_p.php">
+							<div class="col-lg-6 clearl">
+								<label>Product Name</label>
+								<input class="form-control" type="text" class="textbox" id="pname" name="pname" placeholder="PRODUCT NAME">
+							</div>
+							<div class="col-lg-6 clearl">
+								<label>Price</label>
+								<input class="form-control" type="text" class="textbox" id="price" name="price" placeholder="PRICE">
+							</div>
+							<div class="col-lg-6 clearl">
+								<label>Qty</label>
+								<input class="form-control" type="text" class="textbox" id="qty" name="qty" placeholder="QTY">
+							</div>
+							<div class="col-lg-6 clearl">
+								<label>Date</label>
+								<input class="form-control" type="text" class="textbox" id="datepicker" name="datepicker" placeholder="PURCHASE DATE">
+							</div>
+							<div class="col-lg-6 clearl">
+								<label>User</label>
+								<select class="form-control" name="userss" id="userss">
+								
+								</select>
+							</div>
+							<div class="col-lg-6 clearl">
+								<label>Status</label>
+								<select class="form-control" name="status" id="status">
+								
+								</select>
+							</div>
+							<div class="col-lg-8 underline"> &nbsp;</div>
+							<div class="col-lg-6 clearl">
+								<input class="btn btn-default" type="submit" value="Add Purchase" class="btn-style">
+								<input class="btn btn-default" type="button" value="Back" class="btn-style" id="back">
+							</div>						
+						</form>
 					</div>
 				</div>
 			</div>
