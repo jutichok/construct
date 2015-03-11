@@ -24,7 +24,7 @@ if(isset($_SESSION["username"])=="")
     <title>Administrator Page</title>
 	
 	<!--Page CSS -->
-	<link href="user.css" rel="stylesheet"/>
+	<link href="transaction.css" rel="stylesheet"/>
 	
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +52,7 @@ if(isset($_SESSION["username"])=="")
     <script src="../js/bootstrap.min.js"></script>
 	
 	<!-- js -->
-	<script type="text/javascript" src="user.js"></script>
+	<script type="text/javascript" src="transaction.js"></script>
 	
 </head>
 
@@ -66,7 +66,7 @@ if(isset($_SESSION["username"])=="")
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
-						<h2 class="page-header">Manage User</h2>
+						<h2 class="page-header">Transaction</h2>
 					</div>
 				</div>
 				<div class="row">
@@ -75,13 +75,11 @@ if(isset($_SESSION["username"])=="")
 							<table class="table table-bordered table-hover table-striped" id="tableuser">
                                 <thead>
                                     <tr>
-                                        <th><a class="sort" value="userid">ID</a></th>
-                                        <th><a class="sort" value="Name">Name</a></th>
-                                        <th><a class="sort" value="Email">Email</a></th>
-                                        <th><a class="sort" value="Username">Username</a></th>
-                                        <th><a class="sort" value="Password">Password</a></th>
-                                        <th><a class="sort" value="Tel">Tel</a></th>
-										<th><a class="sort" value="Role">Role</a></th>
+                                        <th><a class="sort" value="tranid">ID</a></th>
+                                        <th><a class="sort" value="createdate">Create Date</a></th>
+										<th><a class="sort" value="product">Product</a></th>
+                                        <th><a class="sort" value="amount">Amount</a></th>
+                                        <th><a class="sort" value="user">User</a></th>
 										<th>Manage</th>
                                     </tr>
                                 </thead>
@@ -96,7 +94,7 @@ if(isset($_SESSION["username"])=="")
 					<div class="col-lg-6">
 						<div id="results"><!-- content will be loaded here --></div>
 						<input type="hidden" id="strOrderNow">
-						<input type="button" class="btn btn-default" value="Add User" id="btnAdd"> 
+						<!--<input type="button" class="btn btn-default" value="Add Product" id="btnAdd"> -->
 					</div>
 				</div>
 			</div>

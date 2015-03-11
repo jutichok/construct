@@ -5,13 +5,10 @@ if(isset($_SESSION["username"])=="")
 	?>
 	<script language = "javascript">
 		alert("Access Denied");
-		window.location = "/construct/admin/login/login.php";
+		window.location.href = "/construct/admin/login/login.php";
 	</script>
 	<?php
 }
-
-$userid = (isset($_GET['id']) ? $_GET['id'] : $_SESSION["userid"]);
-
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +24,7 @@ $userid = (isset($_GET['id']) ? $_GET['id'] : $_SESSION["userid"]);
     <title>Administrator Page</title>
 	
 	<!--Page CSS -->
-	<link href="editprofile.css" rel="stylesheet"/>
+	<link href="addProductType.css" rel="stylesheet"/>
 	
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -55,7 +52,7 @@ $userid = (isset($_GET['id']) ? $_GET['id'] : $_SESSION["userid"]);
     <script src="../js/bootstrap.min.js"></script>
 	
 	<!-- js -->
-	<script type="text/javascript" src="editprofile.js"></script>
+	<script type="text/javascript" src="addProductType.js"></script>
 	
 </head>
 
@@ -69,44 +66,21 @@ $userid = (isset($_GET['id']) ? $_GET['id'] : $_SESSION["userid"]);
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
-						<h2 class="page-header">Edit Your Profile</h2>
+						<h2 class="page-header">Add Product Type</h2>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-lg-6">
-						<form id="editprofileform" method="post" action="editprofile_p.php" role="form">
+						<form id="addProductType" method="post" action="addProductType_p.php">
 							<div class="col-lg-6 clearl">
-								<label>Username</label>
-								<input class="form-control" type="text" class="textbox" id="username" name="username" placeholder="USERNAME" readonly>
-							</div>
-							<div class="col-lg-6 clearl">
-								<label>Password</label>
-								<input class="form-control" type="password" class="textbox" id="conpassword" name="conpassword" placeholder="CONFIRM">
-							</div>
-							<div class="col-lg-6 clearl">
-								<label>Email</label>
-								<input class="form-control" type="text" class="textbox" id="email" name="email" placeholder="EMAIL">
-							</div>
-							<div class="col-lg-6 clearl">
-								<label>Name</label>
-								<input class="form-control" type="text" class="textbox" id="name" name="name" placeholder="Name">
-							</div>
-							<div class="col-lg-6 clearl">
-								<label>Tel</label>
-								<input class="form-control" type="text" class="textbox" id="tel" name="tel" placeholder="TEL.">
-							</div>
-							<div class="col-lg-6 clearl">
-								<label>Role</label>
-								<select class="form-control" name="role" id="role">
-									
-								</select>
+								<label>Type Name</label>
+								<input class="form-control" type="text" class="textbox" id="ptname" name="ptname" placeholder="TYPE NAME">
 							</div>
 							<div class="col-lg-8 underline"> &nbsp;</div>
 							<div class="col-lg-6 clearl">
-								<input class="btn btn-default" type="submit" value="Edit Profile" class="btn-style">
+								<input class="btn btn-default" type="submit" value="Add Product Type" class="btn-style">
 								<input class="btn btn-default" type="button" value="Back" class="btn-style" id="back">
-								<input type="hidden" id="userid" name="userid" value="<?php echo $userid;?>">
-							</div>
+							</div>						
 						</form>
 					</div>
 				</div>

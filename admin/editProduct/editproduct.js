@@ -1,6 +1,10 @@
 $( document ).ready(function() {
 	$("#pname").focus();
-	doQuery();
+	
+	QuerygetType();
+	setTimeout(function(){
+		doQuery(),500
+	});
 	
 	$("#editproductform").submit(function() {
 		doSubmit(this);
@@ -12,6 +16,22 @@ $( document ).ready(function() {
 	});
 
 });
+
+function QuerygetType() {
+	$.ajax({
+		url: "editproduct_q.php",
+		type: "POST",
+		data: "getType=true",
+		success: function(data){ 
+			var xmldocs = $.parseXML(data);
+			$xml = $( xmldocs );
+			$xml.find('row').each(function(d){
+				$('#role').append("<option value="+$(this).find('prodtypeid').text()+">"+$(this).find('prodtypename').text()+"</option>");
+			});
+		}
+	});
+}
+
 function doQuery() {
 	$.ajax({
 		url: "editproduct_q.php",

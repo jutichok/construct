@@ -11,14 +11,14 @@ if (isset($_POST["order"]) && !empty($_POST["order"])) {
 }
 	
 
-$result = getUser($pageNow,$strSort,$strOrder);
+$result = getProductType($pageNow,$strSort,$strOrder);
 echo $result;
 mysql_close();
 
-function getUser($pageNow,$strSort,$strOrder){
+function getProductType($pageNow,$strSort,$strOrder){
 	$str="";
 	$uid="";
-	$sql = "SELECT `userid`,`name`,`email`,`username`,`password`,`tel`,t.groupname as role FROM `tuser` inner join tusergrp t on t.groupid = usergrpid";
+	$sql = "SELECT prodtypeid,prodtypename From tprodtype ";
 	$result = mysql_query($sql);
 	$numrow = mysql_num_rows($result);
 	
@@ -46,7 +46,7 @@ function getUser($pageNow,$strSort,$strOrder){
 	}
 	if($strSort == "")
 	{
-	$strSort = "userid";
+	$strSort = "prodtypeid";
 	}
 	
 	if($strOrder == "")
@@ -67,13 +67,8 @@ function getUser($pageNow,$strSort,$strOrder){
 		$str.=("<pageNow>".$pageNow."</pageNow>");
 		$str.=("<numpage>".$Num_Pages."</numpage>");
 		$str.=("<strNewOrder>".$strNewOrder."</strNewOrder>");
-		$str.=("<userid>".$uid["userid"]."</userid>");
-		$str.=("<name>".$uid["name"]."</name>");
-		$str.=("<email>".$uid["email"]."</email>");
-		$str.=("<username>".$uid["username"]."</username>");
-		$str.=("<password>".$uid["password"]."</password>");
-		$str.=("<tel>".$uid["tel"]."</tel>");
-		$str.=("<role>".$uid["role"]."</role>");
+		$str.=("<prodtypeid>".$uid["prodtypeid"]."</prodtypeid>");
+		$str.=("<prodtypename>".$uid["prodtypename"]."</prodtypename>");
 		$str.=("</row>");
 	}
 	$str .= "</head>";

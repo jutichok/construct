@@ -4,15 +4,38 @@ include("../../connection.php");
 $userid = "";
 $str = "";
 $username ="";
-if (isset($_POST["userid"]) && !empty($_POST["userid"])) {
 
-	$userid = $_POST["userid"];
+if (isset($_POST["getrole"]) && !empty($_POST["getrole"])) {
+
+	$getrole = $_POST["getrole"];
+	$str = getRole();
+	echo $str;
 }
+else
+{
+	if (isset($_POST["userid"]) && !empty($_POST["userid"])) {
 
-$str = queryData($userid);
-echo $str;
+		$userid = $_POST["userid"];
+	}
+	$str = queryData($userid);
+	echo $str;
+}
 mysql_close();
 
+function getRole() {
+	$sql = "select 	groupid,groupname from tusergrp";
+	$result = mysql_query($sql);
+	$str = "<head>";
+	while($uid = mysql_fetch_array($result))
+	{
+		$str.=("<row>");
+		$str.=("<groupid>".$uid["groupid"]."</groupid>");
+		$str.=("<groupname>".$uid["groupname"]."</groupname>");
+		$str.=("</row>");
+	}
+	$str .= "</head>";
+	return $str;
+}
 
 function queryData($userid) {
 	$sql = "select username,email,name,tel,t.groupid as role from tuser inner join tusergrp t on t.groupid = usergrpid where userid='$userid';";
@@ -26,6 +49,7 @@ function queryData($userid) {
 	$xml = toXML($username,$email,$name,$tel,$role);
 	return $xml;
 }
+
 function toXML($username,$email,$name,$tel,$role) {
 	$xml = "";
 	$xml.="<profile>";
@@ -37,4 +61,5 @@ function toXML($username,$email,$name,$tel,$role) {
 	$xml.="</profile>";
 	return $xml;
 }
+
 ?>

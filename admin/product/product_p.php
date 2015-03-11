@@ -22,7 +22,7 @@ function getProduct($pageNow,$strSort,$strOrder){
 	$result = mysql_query($sql);
 	$numrow = mysql_num_rows($result);
 	
-	$Per_Page = 3;   // Per Page
+	$Per_Page = 10;   // Per Page
 	
 	if(!$pageNow)
 	{

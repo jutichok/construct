@@ -94,8 +94,7 @@ $prodid = (isset($_GET['id']) ? $_GET['id'] : "");
 							<div class="col-lg-6 clearl">
 								<label>Role</label>
 								<select class="form-control" name="role" id="role">
-									<option value="1">วัสดุก่อสร้าง</option>
-									<option value="2">วัสดุภายในอาคาร</option>
+								
 								</select>
 							</div>
 							<div class="col-lg-8 underline"> &nbsp;</div>

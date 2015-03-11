@@ -1,7 +1,10 @@
 $( document ).ready(function() {
 	$("#username").focus();
-	doQuery();
 	
+	getRole();
+	setTimeout(function(){
+		doQuery(),500
+	});
 	$("#editprofileform").submit(function() {
 		doSubmit(this);
 		return false;
@@ -12,6 +15,21 @@ $( document ).ready(function() {
 	});
 
 });
+
+function getRole() {
+	$.ajax({
+		url: "editprofile_q.php",
+		type: "POST",
+		data: "getrole=true",
+		success: function(data){ 
+			var xmldocs = $.parseXML(data);
+			$xml = $( xmldocs );
+			$xml.find('row').each(function(d){
+				$('#role').append("<option value="+$(this).find('groupid').text()+">"+$(this).find('groupname').text()+"</option>");
+			});
+		}
+	});
+}
 function doQuery() {
 	$.ajax({
 		url: "editprofile_q.php",
@@ -84,5 +102,5 @@ function setQueryData(username,email,tel,name,role) {
 	$("#email").val(email);
 	$("#tel").val(tel);
 	$("#name").val(name);
-	$("#role").val(role)
+	$("#role").val(role);
 }
