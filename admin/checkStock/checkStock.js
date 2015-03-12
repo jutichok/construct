@@ -1,30 +1,26 @@
 $( document ).ready(function() {
 	//initial
-	$('.fa.fa-credit-card').parent().parent().attr("class","active");
+	$('.fa.fa-folder-open').parent().parent().attr("class","active");
 	
 	var pageval = 1;
-	var sortval = 'tranid';
+	var sortval = 'prodid';
 	var orderval = 'desc';
-	var userid = $('#userid').val();
-	//alert(userid);
-	setTimeout(function(){doQuery(pageval,sortval,orderval,userid),1000});
-	// $('#btnAdd').click(function(){
-		// window.location = "/construct/admin/addProduct/addProduct.php";
-	// });
+	doQuery(pageval,sortval,orderval);
 	
 	$('.sort').click(function(){
 		sortval = $(this).attr('value');
 		orderval = $('#strOrderNow').val();
-		reset();
-		doQuery(pageval,sortval,orderval,userid);
+		reset();	
+		doQuery(pageval,sortval,orderval);
 	});
 	
 	$(document).on('click','.getpage',function(){
 		pageval = $(this).attr('value');
 		//orderval = $('#strOrderNow').val();
 		reset();
-		doQuery(pageval,sortval,orderval,userid);
+		doQuery(pageval,sortval,orderval);
 	});
+	
 	
 	
 });
@@ -33,11 +29,11 @@ function reset(){
 	$('#results').html('');
 }
 
-function doQuery(pageval,sortval,orderval,userid) {
+function doQuery(pageval,sortval,orderval) {
 	$.ajax({
-		url: "transaction_p.php",
+		url: "checkStock_p.php",
 		type: "POST",
-		data: 'page='+pageval+'&sort='+sortval+'&order='+orderval+'&userid='+userid,//"{ page : '"+page+"', sort : '"+sort+"',order : '"+order+"' }",
+		data: 'page='+pageval+'&sort='+sortval+'&order='+orderval,//"{ page : '"+page+"', sort : '"+sort+"',order : '"+order+"' }",
 		success: function(data){ 
 			var xmldocs = $.parseXML(data);
 			$xml = $( xmldocs );
@@ -51,12 +47,12 @@ function doQuery(pageval,sortval,orderval,userid) {
 			var html;
 			$xml.find("row").each(function(d){
 				html = "<tr>";
-				html += "<td>"+ $(this).find("tranid").text() +"</td>";
-				html += "<td>"+ $(this).find("createdate").text() +"</td>";
+				html += "<td>"+ $(this).find("prodid").text() +"</td>";
 				html += "<td>"+ $(this).find("prodname").text() +"</td>";
-				html += "<td>"+ $(this).find("amount").text() +"</td>";
-				html += "<td>"+ $(this).find("name").text() +"</td>";
-				html += "<td><a href=/construct/admin/deleteTransaction/deleteTransaction.php?id="+$(this).find("tranid").text()+">Delete</a></td>";
+				html += "<td>"+ $(this).find("price").text() +"</td>";
+				html += "<td>"+ $(this).find("qty").text() +"</td>";
+				html += "<td>"+ $(this).find("measure").text() +"</td>";
+				html += "<td>"+ $(this).find("prodtype").text() +"</td>";
 				html += "</tr>";
 				$("#tableuser").find("tbody").append(html);
 			});

@@ -9,14 +9,6 @@ if(isset($_SESSION["username"])=="")
 	</script>
 	<?php
 }
-
-if (isset($_POST["userid"]) && !empty($_POST["userid"])) {
-	$s = $_POST["userid"];
-}
-else{
-	$s = "";
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +24,7 @@ else{
     <title>Administrator Page</title>
 	
 	<!--Page CSS -->
-	<link href="transaction.css" rel="stylesheet"/>
+	<link href="checkStock.css" rel="stylesheet"/>
 	
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -60,7 +52,7 @@ else{
     <script src="../js/bootstrap.min.js"></script>
 	
 	<!-- js -->
-	<script type="text/javascript" src="transaction.js"></script>
+	<script type="text/javascript" src="checkStock.js"></script>
 	
 </head>
 
@@ -74,7 +66,7 @@ else{
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
-						<h2 class="page-header">Transaction</h2>
+						<h2 class="page-header">Check Stock</h2>
 					</div>
 				</div>
 				<div class="row">
@@ -83,12 +75,12 @@ else{
 							<table class="table table-bordered table-hover table-striped" id="tableuser">
                                 <thead>
                                     <tr>
-                                        <th><a class="sort" value="tranid">ID</a></th>
-                                        <th><a class="sort" value="createdate">Create Date</a></th>
-										<th><a class="sort" value="product">Product</a></th>
-                                        <th><a class="sort" value="amount">Amount</a></th>
-                                        <th><a class="sort" value="user">User</a></th>
-										<th>Manage</th>
+                                        <th><a class="sort" value="prodid">ID</a></th>
+                                        <th><a class="sort" value="prodname">Name</a></th>
+                                        <th><a class="sort" value="price">Price</a></th>
+                                        <th><a class="sort" value="qty">Quantity</a></th>
+										<th><a class="sort" value="measure">Measure</a></th>
+										<th><a class="sort" value="prodtype">Product Type</a></th>
                                     </tr>
                                 </thead>
                                 <tbody align=center>
@@ -101,9 +93,7 @@ else{
 				<div class="row">
 					<div class="col-lg-6">
 						<div id="results"><!-- content will be loaded here --></div>
-						<input type="hidden" id="strOrderNow">
-						<input type="hidden" id="userid" value="<?php echo $s;?>">
-						<!--<input type="button" class="btn btn-default" value="Add Product" id="btnAdd"> -->
+						<input type="hidden" id="strOrderNow"><br/>
 					</div>
 				</div>
 			</div>

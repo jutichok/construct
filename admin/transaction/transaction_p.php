@@ -1,6 +1,10 @@
 <?php
 include("../../connection.php");
 
+
+$strSort  ="";
+$strOrder = "";
+$pageNow= 1;
 if (isset($_POST["userid"]) && !empty($_POST["userid"])) {
 	$userid = $_POST["userid"];   
 	$result = getTransaction($pageNow,$strSort,$strOrder,$userid);
