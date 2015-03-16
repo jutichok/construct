@@ -6,6 +6,13 @@ $Qty = "";
 $Measure = "";
 $Role = "";
 $prodid = "";
+$image  ="";
+if (isset($_FILES['image']['tmp_name']) && !empty($_FILES['image']['tmp_name'])) {
+
+	$image = addslashes(file_get_contents($_FILES['image']['tmp_name'])); 
+
+}
+
 if (isset($_POST["prodid"]) && !empty($_POST["prodid"])) {
 
 	$prodid = $_POST["prodid"];
@@ -30,26 +37,30 @@ if (isset($_POST["role"]) && !empty($_POST["role"])) {
 	$role = $_POST["role"];
 }
 $str = "";
-if(updateTprod($prodid,$pname,$price,$Qty,$Measure,$role)){
-	$str.=("<register>");
-	$str.=("<result>Y</result>");
-	$str.=("<reason>Edit Profile Success.</reason>");
-	$str.=("</register>");
-	echo $str;
+if(updateTprod($prodid,$pname,$price,$Qty,$Measure,$role,$image)){
+	echo 	"<script language = 'javascript'>
+			alert('Update Product Success');
+			window.location.href = '/construct/admin/product/product.php';
+			</script>";
+	
 
 }
 else {
-	$str.=("<register>");
-	$str.=("<result>N</result>");
-	$str.=("<reason>Invalid Password.</reason>");
-	$str.=("</register>");
-	echo $str;
+	echo 	"<script language = 'javascript'>
+			alert('Update Product Error');
+			window.location.href = '/construct/admin/product/product.php';
+			</script>";
 
 mysql_close();
 }
 
-function updateTprod($prodid,$pname,$price,$Qty,$Measure,$role) {
-	$updateSQL = "update tprod set prodname='$pname', price='$price', Qty='$Qty',Measure='$Measure',prodtypeid='$role' where prodid='$prodid'";
+function updateTprod($prodid,$pname,$price,$Qty,$Measure,$role,$image) {
+	if($image==""){
+		$updateSQL = "update tprod set prodname='$pname', price='$price', Qty='$Qty',Measure='$Measure',prodtypeid='$role' where prodid='$prodid'";
+	}
+	else{
+		$updateSQL = "update tprod set prodname='$pname', price='$price', Qty='$Qty',Measure='$Measure',prodtypeid='$role',prodimg='{$image}' where prodid='$prodid'";
+	}
 	mysql_query($updateSQL);
 	return true;
 }

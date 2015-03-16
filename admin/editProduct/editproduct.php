@@ -74,7 +74,7 @@ $prodid = (isset($_GET['id']) ? $_GET['id'] : "");
 				</div>
 				<div class="row">
 					<div class="col-lg-6">
-						<form id="editproductform" method="post" action="editproduct_p.php" role="form">
+						<form id="editproductform" method="post" action="editproduct_p.php" enctype="multipart/form-data">
 							<div class="col-lg-6 clearl">
 								<label>Product Name</label>
 								<input class="form-control" type="text" class="textbox" id="pname" name="pname" placeholder="PRODUCT NAME">
@@ -97,6 +97,11 @@ $prodid = (isset($_GET['id']) ? $_GET['id'] : "");
 								
 								</select>
 							</div>
+							<div class="col-lg-6 clearl">
+								<label>Product Image</label>
+								<input type="file" name="image">
+							</div>
+							
 							<div class="col-lg-8 underline"> &nbsp;</div>
 							<div class="col-lg-6 clearl">
 								<input class="btn btn-default" type="submit" value="Edit Product" class="btn-style">
@@ -104,6 +109,11 @@ $prodid = (isset($_GET['id']) ? $_GET['id'] : "");
 								<input type="hidden" id="prodid" name="prodid" value="<?php echo $prodid;?>">
 							</div>
 						</form>
+					</div>
+					<div class="col-lg-6">
+						<label>Product Image</label>
+						<br/>
+						<img id="displayimg">
 					</div>
 				</div>
 			</div>

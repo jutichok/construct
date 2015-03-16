@@ -45,6 +45,8 @@ function doQuery() {
 			var qty = $xml.find( "qty" ).text();
 			var measure = $xml.find( "measure" ).text();
 			var prodtypeid = $xml.find( "prodtypeid" ).text();
+			var prodimg = $xml.find( "prodimg" ).text();
+			$("#displayimg").attr("src","data:image/jpeg;base64,"+ prodimg +"");
 			setQueryData(prodname,price,qty,measure,prodtypeid);
 		}
 	});
@@ -54,20 +56,20 @@ function doSubmit(aform) {
 	if(!chkNullValue()) {
 		return false;
 	}
-	//aform.submit();
-	$.ajax({
-		url: "editproduct_p.php",
-		type: "POST",
-		data: $(aform).serialize(), 
-		success: function(data){ 
-			var xmldocs = $.parseXML(data);
-			$xml = $( xmldocs );
-			var reason = $xml.find( "reason" ).text();
-			var result = $xml.find( "result" ).text();
-			alert(reason);
-			locationPage(result);
-		}
-	});
+	aform.submit();
+	// $.ajax({
+		// url: "editproduct_p.php",
+		// type: "POST",
+		// data: $(aform).serialize(), 
+		// success: function(data){ 
+			// var xmldocs = $.parseXML(data);
+			// $xml = $( xmldocs );
+			// var reason = $xml.find( "reason" ).text();
+			// var result = $xml.find( "result" ).text();
+			// alert(reason);
+			// locationPage(result);
+		// }
+	// });
 	
 
 }
@@ -109,5 +111,6 @@ function setQueryData(prodname,price,qty,measure,prodtypeid) {
 	$("#price").val(price);
 	$("#qty").val(qty);
 	$("#measure").val(measure);
-	$("#role").val(prodtypeid)
+	$("#role").val(prodtypeid);
+	
 }

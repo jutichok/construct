@@ -71,7 +71,7 @@ if(isset($_SESSION["username"])=="")
 				</div>
 				<div class="row">
 					<div class="col-lg-8">
-						<form id="addProduct" method="post" action="addProduct_p.php">
+						<form id="addProduct" method="post" action="addProduct_p.php" enctype="multipart/form-data">
 							<div class="col-lg-6 clearl">
 								<label>Product Name</label>
 								<input class="form-control" type="text" class="textbox" id="pname" name="pname" placeholder="PRODUCT NAME">
@@ -94,6 +94,11 @@ if(isset($_SESSION["username"])=="")
 									
 								</select>
 							</div>
+							<div class="col-lg-6 clearl">
+								<label>Product Image</label>
+								<input type="file" name="image">
+							</div>
+							
 							<div class="col-lg-8 underline"> &nbsp;</div>
 							<div class="col-lg-6 clearl">
 								<input class="btn btn-default" type="submit" value="Add Product" class="btn-style">

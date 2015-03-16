@@ -7,6 +7,8 @@ $Measure = "";
 $Role = "";
 $prodid = "";
 $str = "";
+$image = addslashes(file_get_contents($_FILES['image']['tmp_name'])); 
+
 if (isset($_POST["prodid"]) && !empty($_POST["prodid"])) {
 
 	$prodid = $_POST["prodid"];
@@ -31,20 +33,22 @@ if (isset($_POST["role"]) && !empty($_POST["role"])) {
 	$role = $_POST["role"];
 }
 
+
+
 if(checkProductname($pname)){
-	addProduct($pname,$price,$Qty,$Measure,$role);
-	$str.=("<add>");
-	$str.=("<result>Y</result>");
-	$str.=("<reason>Add Product Success.</reason>");
-	$str.=("</add>");
-	echo $str;
+	addProduct($pname,$price,$Qty,$Measure,$role,$image);
+	echo 	"<script language = 'javascript'>
+			alert('Add Product Success');
+			window.location.href = '/construct/admin/product/product.php';
+			</script>";
+	
+	
 }
 else{
-	$str.=("<add>");
-	$str.=("<result>N</result>");
-	$str.=("<reason>Add Product Error.</reason>");
-	$str.=("</add>");
-	echo $str;
+	echo 	"<script language = 'javascript'>
+			alert('Add Product Error');
+			window.location.href = '/construct/admin/addproduct/addproduct.php';
+			</script>";
 }
 
 mysql_close();
@@ -64,9 +68,9 @@ function checkProductname($pname){
 	}
 }
 
-function addProduct($pname,$price,$Qty,$Measure,$role){
+function addProduct($pname,$price,$Qty,$Measure,$role,$image){
 	
-	$sql = "insert into tprod (prodname, price, qty, measure, prodtypeid) values('$pname','$price','$Qty','$Measure','$role')";
+	$sql = "insert into tprod (prodname, price, qty, measure, prodtypeid,prodimg) values('$pname','$price','$Qty','$Measure','$role','{$image}')";
 	$result = mysql_query($sql);
 }
 

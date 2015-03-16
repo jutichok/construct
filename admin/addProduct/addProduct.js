@@ -11,6 +11,8 @@ $( document ).ready(function() {
     $('#back').click(function () {
         window.location = '/construct/admin/Product/Product.php';
     });
+	
+	
 });
 
 function QuerygetType() {
@@ -32,20 +34,22 @@ function doSubmit(aform) {
 	if(!chkNullValue()) {
 		return false;
 	}
-	//aform.submit();
-	$.ajax({
-		url: "addProduct_p.php",
-		type: "POST",
-		data: $(aform).serialize(), 
-		success: function(data){ 
-			var xmldocs = $.parseXML(data);
-			$xml = $( xmldocs );
-			var reason = $xml.find( "reason" ).text();
-			var result = $xml.find( "result" ).text();
-			alert(reason);
-			locationPage(result);
-		}
-	});
+	aform.submit();
+	
+	// console.log(formData);
+	// $.ajax({
+		// url: "addProduct_p.php",
+		// type: "POST",
+		// data: formData, 
+		// success: function(data){ 
+			// var xmldocs = $.parseXML(data);
+			// $xml = $( xmldocs );
+			// var reason = $xml.find( "reason" ).text();
+			// var result = $xml.find( "result" ).text();
+			// alert(reason);
+			// locationPage(result);
+		// }
+	// });
 	
 
 }
