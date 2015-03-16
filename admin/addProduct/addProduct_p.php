@@ -7,8 +7,11 @@ $Measure = "";
 $Role = "";
 $prodid = "";
 $str = "";
-$image = addslashes(file_get_contents($_FILES['image']['tmp_name'])); 
+$image = "";
 
+if (isset($_FILES['image']['tmp_name']) && !empty($_FILES['image']['tmp_name'])) {
+	$image = addslashes(file_get_contents($_FILES['image']['tmp_name'])); 
+}
 if (isset($_POST["prodid"]) && !empty($_POST["prodid"])) {
 
 	$prodid = $_POST["prodid"];

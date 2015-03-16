@@ -74,6 +74,11 @@ function chkNullValue() {
 		$("#measure").focus();
 		return false;
 	}
+	else if($("#imaggg").val() == "") {
+		alert("Please enter image");
+		$("#imaggg").focus();
+		return false;
+	}
 	return true;
 }
 

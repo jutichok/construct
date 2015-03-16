@@ -96,7 +96,7 @@ if(isset($_SESSION["username"])=="")
 							</div>
 							<div class="col-lg-6 clearl">
 								<label>Product Image</label>
-								<input type="file" name="image">
+								<input type="file" name="image" id="imaggg">
 							</div>
 							
 							<div class="col-lg-8 underline"> &nbsp;</div>
