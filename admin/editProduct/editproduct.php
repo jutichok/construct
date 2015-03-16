@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../../connection.php");
 if(isset($_SESSION["username"])=="")
 {
 	?>
@@ -98,9 +99,13 @@ $prodid = (isset($_GET['id']) ? $_GET['id'] : "");
 								</select>
 							</div>
 							<div class="col-lg-6 clearl">
-								<label>Product Image</label>
-								<input type="file" name="image">
+								<label>In Stock</label>
+								<select class="form-control" name="instock" id="instock">
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
 							</div>
+							
 							
 							<div class="col-lg-8 underline"> &nbsp;</div>
 							<div class="col-lg-6 clearl">
@@ -111,10 +116,17 @@ $prodid = (isset($_GET['id']) ? $_GET['id'] : "");
 						</form>
 					</div>
 					<div class="col-lg-6">
-						<label>Product Image</label>
-						<br/>
-						<img id="displayimg">
+						<div class="col-lg-6 clearl">
+							<label>Product Image</label>
+							<br/>
+							<img id="displayimg">
+						</div>
+						<div class="col-lg-6 clearl">
+							<label>Product Image</label>
+							<input type="file" name="image">
+						</div>
 					</div>
+					
 				</div>
 			</div>
 		</div>

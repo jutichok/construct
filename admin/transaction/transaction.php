@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../../connection.php");
 if(isset($_SESSION["username"])=="")
 {
 	?>
@@ -103,6 +104,7 @@ else{
 						<div id="results"><!-- content will be loaded here --></div>
 						<input type="hidden" id="strOrderNow">
 						<input type="hidden" id="userid" value="<?php echo $s;?>">
+						<input type="hidden" id="user" value="<?php echo $_SESSION['role']?>">
 						<!--<input type="button" class="btn btn-default" value="Add Product" id="btnAdd"> -->
 					</div>
 				</div>

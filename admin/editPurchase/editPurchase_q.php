@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../../connection.php");
 
 $prodid = "";
@@ -32,7 +33,15 @@ mysql_close();
 
 
 function QueryGetUser(){
-	$sql = "SELECT userid,name FROM tuser";
+	$userid = $_SESSION['userid'];
+	if($_SESSION["role"]=="employee")
+	{
+		$sql = "SELECT userid,name FROM tuser where userid='$userid'";
+	}
+	else
+	{
+		$sql = "SELECT userid,name FROM tuser";
+	}
 	$result = mysql_query($sql);
 	$str = "<head>";
 	while($uid = mysql_fetch_array($result))

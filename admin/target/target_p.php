@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../../connection.php");
 if (isset($_POST["page"]) && !empty($_POST["page"])) {
 	$pageNow = $_POST["page"];    
@@ -18,7 +19,16 @@ mysql_close();
 function getProduct($pageNow,$strSort,$strOrder){
 	$str="";
 	$uid="";
-	$sql = "select s.userid as userid,s.name as name,sum(amount) as total from ttransact t inner join tuser s on s.userid = t.userid group by s.name";
+	$userid = $_SESSION['userid'];
+	if($_SESSION["role"]=="employee")
+	{
+		$sql = "select s.userid as userid,s.name as name,sum(amount) as total from ttransact t inner join tuser s on s.userid = t.userid where s.userid='$userid' group by s.name ";
+	}
+	else
+	{
+		$sql = "select s.userid as userid,s.name as name,sum(amount) as total from ttransact t inner join tuser s on s.userid = t.userid group by s.name";
+	}
+	
 	$result = mysql_query($sql);
 	$numrow = mysql_num_rows($result);
 	

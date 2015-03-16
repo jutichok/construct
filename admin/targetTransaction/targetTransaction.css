@@ -1,0 +1,12 @@
+.clearl{
+	clear:left;
+	margin-bottom:15px
+}
+.underline{
+	border-bottom: 1px solid #eee;
+    	margin: 5px 0 20px;
+    	padding-bottom: 9px;
+}
+a{
+	cursor:pointer;
+}

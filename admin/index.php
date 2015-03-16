@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../connection.php");
 if(isset($_SESSION["username"])=="")
 {
 	?>
@@ -28,7 +29,7 @@ if(isset($_SESSION["username"])=="")
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
-
+	
     <!-- Morris Charts CSS -->
     <!--<link href="css/plugins/morris.css" rel="stylesheet">-->
 

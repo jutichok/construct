@@ -18,7 +18,7 @@ mysql_close();
 function getProduct($pageNow,$strSort,$strOrder){
 	$str="";
 	$uid="";
-	$sql = "SELECT prodid,prodname,price,qty,measure,tpy.prodtypename as prodtype FROM tprod tp inner join tprodtype tpy on tpy.prodtypeid = tp.prodtypeid";
+	$sql = "SELECT prodid,prodname,price,qty,measure,tpy.prodtypename as prodtype,inshop as instock FROM tprod tp inner join tprodtype tpy on tpy.prodtypeid = tp.prodtypeid";
 	$result = mysql_query($sql);
 	$numrow = mysql_num_rows($result);
 	
@@ -73,6 +73,7 @@ function getProduct($pageNow,$strSort,$strOrder){
 		$str.=("<qty>".$uid["qty"]."</qty>");
 		$str.=("<measure>".$uid["measure"]."</measure>");
 		$str.=("<prodtype>".$uid["prodtype"]."</prodtype>");
+		$str.=("<instock>".$uid["instock"]."</instock>");
 		$str.=("</row>");
 	}
 	$str .= "</head>";

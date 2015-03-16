@@ -46,8 +46,9 @@ function doQuery() {
 			var measure = $xml.find( "measure" ).text();
 			var prodtypeid = $xml.find( "prodtypeid" ).text();
 			var prodimg = $xml.find( "prodimg" ).text();
+			var instock = $xml.find( "instock" ).text();
 			$("#displayimg").attr("src","data:image/jpeg;base64,"+ prodimg +"");
-			setQueryData(prodname,price,qty,measure,prodtypeid);
+			setQueryData(prodname,price,qty,measure,prodtypeid,instock);
 		}
 	});
 
@@ -106,11 +107,12 @@ function locationPage(result) {
 	}
 
 }
-function setQueryData(prodname,price,qty,measure,prodtypeid) {
+function setQueryData(prodname,price,qty,measure,prodtypeid,instock) {
 	$("#pname").val(prodname);
 	$("#price").val(price);
 	$("#qty").val(qty);
 	$("#measure").val(measure);
 	$("#role").val(prodtypeid);
+	$("#instock").val(instock);
 	
 }

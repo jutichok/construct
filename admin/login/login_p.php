@@ -27,12 +27,12 @@ else {
 	$str.=("</login>");
 	echo $str;
 }
-
+mysql_close();
 function checkUserData($username,$password) {
-	$sql = "SELECT userid,username,name,tug.groupname as role,password FROM tuser U inner join tusergrp tug on tug.groupid = U.usergrpid WHERE U.username = '$username' && password = '$password';";
+	$sql = "SELECT userid,username,name,tug.groupname as role,password FROM tuser U inner join tusergrp tug on tug.groupid = U.usergrpid WHERE U.username = '$username' && password = '$password'";
 	$result = mysql_query($sql);
 	$uid = mysql_fetch_array($result);
-	mysql_close();
+	
 	$usernamedb = "";
 	$passworddb = "";
 	if($uid!=null) {
@@ -46,8 +46,9 @@ function checkUserData($username,$password) {
 		return true;
 	}
 	return false;
-	
 }
+
+
 function validateUserPassword($username,$password,$usernamedb,$passworddb) {
 	if($username != $usernamedb) {
 		return false;

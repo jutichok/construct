@@ -56,6 +56,7 @@ function doQuery(pageval,sortval,orderval) {
 				html += "<td>"+ $(this).find("qty").text() +"</td>";
 				html += "<td>"+ $(this).find("measure").text() +"</td>";
 				html += "<td>"+ $(this).find("prodtype").text() +"</td>";
+				html += "<td>"+ $(this).find("instock").text() +"</td>";
 				html += "<td><a href=/construct/admin/editproduct/editproduct.php?id="+$(this).find("prodid").text()+">Edit</a> | <a href=/construct/admin/deleteproduct/deleteproduct.php?id="+$(this).find("prodid").text()+">Delete</a></td>";
 				html += "</tr>";
 				$("#tableuser").find("tbody").append(html);

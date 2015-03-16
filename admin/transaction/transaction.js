@@ -26,7 +26,18 @@ $( document ).ready(function() {
 		doQuery(pageval,sortval,orderval,userid);
 	});
 	
-	
+	$(document).on('click','.check',function(){
+		var role = $('#user').val();
+		if(role != "employee")
+		{
+			var id = $(this).attr(id);
+			window.location.href = '/construct/admin/deleteTransaction/deleteTransaction.php?id='+id;
+		}
+		else
+		{
+			alert("You Don't Have Permission");
+		}
+	});
 });
 function reset(){
 	$("#tableuser").find("tbody").html('');
@@ -56,7 +67,7 @@ function doQuery(pageval,sortval,orderval,userid) {
 				html += "<td>"+ $(this).find("prodname").text() +"</td>";
 				html += "<td>"+ $(this).find("amount").text() +"</td>";
 				html += "<td>"+ $(this).find("name").text() +"</td>";
-				html += "<td><a href=/construct/admin/deleteTransaction/deleteTransaction.php?id="+$(this).find("tranid").text()+">Delete</a></td>";
+				html += "<td><a class='check' id="+$(this).find("tranid").text()+">Delete</a></td>";
 				html += "</tr>";
 				$("#tableuser").find("tbody").append(html);
 			});

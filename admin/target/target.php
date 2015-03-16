@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../../connection.php");
 if(isset($_SESSION["username"])=="")
 {
 	?>
@@ -66,7 +67,7 @@ if(isset($_SESSION["username"])=="")
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
-						<h2 class="page-header">Target</h2>
+						<h2 class="page-header">Target Employee</h2>
 					</div>
 				</div>
 				<div class="row">
@@ -75,6 +76,7 @@ if(isset($_SESSION["username"])=="")
 							<table class="table table-bordered table-hover table-striped" id="tableuser">
                                 <thead>
                                     <tr>
+										<th><a class="sort" value="userid">ID</a></th>
                                         <th><a class="sort" value="name">Name</a></th>
                                         <th><a class="sort" value="tot">Total</a></th>
                                         <th><a class="sort" value="detail">Detail</a></th>

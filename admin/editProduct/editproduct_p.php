@@ -36,8 +36,12 @@ if (isset($_POST["role"]) && !empty($_POST["role"])) {
 
 	$role = $_POST["role"];
 }
+if (isset($_POST["instock"]) && !empty($_POST["instock"])) {
+
+	$instock = $_POST["instock"];
+}
 $str = "";
-if(updateTprod($prodid,$pname,$price,$Qty,$Measure,$role,$image)){
+if(updateTprod($prodid,$pname,$price,$Qty,$Measure,$role,$image,$instock)){
 	echo 	"<script language = 'javascript'>
 			alert('Update Product Success');
 			window.location.href = '/construct/admin/product/product.php';
@@ -54,12 +58,12 @@ else {
 mysql_close();
 }
 
-function updateTprod($prodid,$pname,$price,$Qty,$Measure,$role,$image) {
+function updateTprod($prodid,$pname,$price,$Qty,$Measure,$role,$image,$instock) {
 	if($image==""){
-		$updateSQL = "update tprod set prodname='$pname', price='$price', Qty='$Qty',Measure='$Measure',prodtypeid='$role' where prodid='$prodid'";
+		$updateSQL = "update tprod set prodname='$pname', price='$price', Qty='$Qty',Measure='$Measure',prodtypeid='$role',inshop='$instock' where prodid='$prodid'";
 	}
 	else{
-		$updateSQL = "update tprod set prodname='$pname', price='$price', Qty='$Qty',Measure='$Measure',prodtypeid='$role',prodimg='{$image}' where prodid='$prodid'";
+		$updateSQL = "update tprod set prodname='$pname', price='$price', Qty='$Qty',Measure='$Measure',prodtypeid='$role',inshop='$instock',prodimg='{$image}' where prodid='$prodid'";
 	}
 	mysql_query($updateSQL);
 	return true;

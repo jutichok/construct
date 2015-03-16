@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../../connection.php");
 if (isset($_POST["page"]) && !empty($_POST["page"])) {
 	$pageNow = $_POST["page"];    
@@ -18,10 +19,24 @@ mysql_close();
 function getPurchase($pageNow,$strSort,$strOrder){
 	$str="";
 	$uid="";
-	$sql = "SELECT purid, purname , purprice, purqty, createdate, tu.name as user, ts.statusname  as statusname
+	$userid = $_SESSION['userid'];
+	if($_SESSION["role"]=="employee")
+	{
+		$sql = "SELECT purid, purname , purprice, purqty, createdate, tu.name as user, ts.statusname  as statusname
+			FROM tpurchase tp
+			inner join tuser tu on tu.userid = tp.userid
+			inner join tstatus ts on ts.statusid = tp.status
+			where tu.userid = '$userid'";
+			
+	}
+	else
+	{
+		$sql = "SELECT purid, purname , purprice, purqty, createdate, tu.name as user, ts.statusname  as statusname
 			FROM tpurchase tp
 			inner join tuser tu on tu.userid = tp.userid
 			inner join tstatus ts on ts.statusid = tp.status";
+	
+	}
 	$result = mysql_query($sql);
 	$numrow = mysql_num_rows($result);
 	

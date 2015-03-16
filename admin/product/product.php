@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../../connection.php");
 if(isset($_SESSION["username"])=="")
 {
 	?>
@@ -81,6 +82,7 @@ if(isset($_SESSION["username"])=="")
                                         <th><a class="sort" value="qty">Quantity</a></th>
 										<th><a class="sort" value="measure">Measure</a></th>
 										<th><a class="sort" value="prodtype">Product Type</a></th>
+										<th><a class="sort" value="instock">In Stock</a></th>
 										<th>Manage</th>
                                     </tr>
                                 </thead>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../../connection.php");
 
 $userid = "";
@@ -23,7 +24,14 @@ else
 mysql_close();
 
 function getRole() {
-	$sql = "select 	groupid,groupname from tusergrp";
+	$role = $_SESSION['role'];
+	if($_SESSION["role"]=="employee"){
+		$sql = "select groupid,groupname from tusergrp where groupname ='employee'";
+	}
+	else
+	{
+		$sql = "select groupid,groupname from tusergrp where";
+	}
 	$result = mysql_query($sql);
 	$str = "<head>";
 	while($uid = mysql_fetch_array($result))
