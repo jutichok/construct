@@ -30,7 +30,7 @@ function getRole() {
 	}
 	else
 	{
-		$sql = "select groupid,groupname from tusergrp where";
+		$sql = "select groupid,groupname from tusergrp";
 	}
 	$result = mysql_query($sql);
 	$str = "<head>";

@@ -1,55 +1,42 @@
 $( document ).ready(function() {
 	//initial
-	$('.fa.fa-credit-card').parent().parent().attr("class","active");
+	$('.fa.fa-picture-o').parent().parent().attr("class","active");
 	
 	var pageval = 1;
-	var sortval = 'tranid';
+	var sortval = 'coltypeid';
 	var orderval = 'desc';
-	var userid = $('#userid').val();
-	//alert(userid);
-	setTimeout(function(){doQuery(pageval,sortval,orderval,userid),1000});
-	// $('#btnAdd').click(function(){
-		// window.location = "/construct/admin/addProduct/addProduct.php";
-	// });
+	doQuery(pageval,sortval,orderval);
+	$('#btnAdd').click(function(){
+		window.location = "/construct/admin/addCollectionType/addCollectionType.php";
+	});
 	
 	$('.sort').click(function(){
 		sortval = $(this).attr('value');
 		orderval = $('#strOrderNow').val();
 		reset();
-		doQuery(pageval,sortval,orderval,userid);
+		doQuery(pageval,sortval,orderval);
 	});
 	
 	$(document).on('click','.getpage',function(){
 		pageval = $(this).attr('value');
 		//orderval = $('#strOrderNow').val();
 		reset();
-		doQuery(pageval,sortval,orderval,userid);
+		doQuery(pageval,sortval,orderval);
 	});
 	
-	$(document).on('click','.check',function(){
-		var role = $('#user').val();
-		
-		if(role != "employee")
-		{
-			var id = $(this).attr('getid')
-			window.location = '/construct/admin/deleteTransaction/deleteTransaction.php?id='+id;
-		}
-		else
-		{
-			alert("You Don't Have Permission");
-		}
-	});
+	
+	
 });
 function reset(){
 	$("#tableuser").find("tbody").html('');
 	$('#results').html('');
 }
 
-function doQuery(pageval,sortval,orderval,userid) {
+function doQuery(pageval,sortval,orderval) {
 	$.ajax({
-		url: "transaction_p.php",
+		url: "collectionType_p.php",
 		type: "POST",
-		data: 'page='+pageval+'&sort='+sortval+'&order='+orderval+'&userid='+userid,//"{ page : '"+page+"', sort : '"+sort+"',order : '"+order+"' }",
+		data: 'page='+pageval+'&sort='+sortval+'&order='+orderval,//"{ page : '"+page+"', sort : '"+sort+"',order : '"+order+"' }",
 		success: function(data){ 
 			var xmldocs = $.parseXML(data);
 			$xml = $( xmldocs );
@@ -63,12 +50,9 @@ function doQuery(pageval,sortval,orderval,userid) {
 			var html;
 			$xml.find("row").each(function(d){
 				html = "<tr>";
-				html += "<td>"+ $(this).find("tranid").text() +"</td>";
-				html += "<td>"+ $(this).find("createdate").text() +"</td>";
-				html += "<td>"+ $(this).find("prodname").text() +"</td>";
-				html += "<td>"+ $(this).find("amount").text() +"</td>";
-				html += "<td>"+ $(this).find("name").text() +"</td>";
-				html += "<td><label style='cursor:pointer;color:#337ab7' class='check' getid="+$(this).find("tranid").text()+">Delete</label></td>";
+				html += "<td>"+ $(this).find("coltypeid").text() +"</td>";
+				html += "<td style=\"text-align:left\">"+ $(this).find("coltypename").text() +"</td>";
+				html += "<td><a href=/construct/admin/editCollectionType/editCollectionType.php?id="+$(this).find("coltypeid").text()+">Edit</a> | <a href=/construct/admin/deleteCollectionType/deleteCollectionType.php?id="+$(this).find("coltypeid").text()+">Delete</a></td>";
 				html += "</tr>";
 				$("#tableuser").find("tbody").append(html);
 			});

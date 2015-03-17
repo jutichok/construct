@@ -52,7 +52,7 @@ function doQuery(pageval,sortval,orderval) {
 				html = "<tr>";
 				html += "<td>"+ $(this).find("prodtypeid").text() +"</td>";
 				html += "<td style=\"text-align:left\">"+ $(this).find("prodtypename").text() +"</td>";
-				html += "<td><a href=/construct/admin/editproduct/editproduct.php?id="+$(this).find("prodtypeid").text()+">Edit</a> | <a href=/construct/admin/deleteproduct/deleteproduct.php?id="+$(this).find("prodtypeid").text()+">Delete</a></td>";
+				html += "<td><a href=/construct/admin/editproductType/editproductType.php?id="+$(this).find("prodtypeid").text()+">Edit</a> | <a href=/construct/admin/deleteproductType/deleteproductType.php?id="+$(this).find("prodtypeid").text()+">Delete</a></td>";
 				html += "</tr>";
 				$("#tableuser").find("tbody").append(html);
 			});
