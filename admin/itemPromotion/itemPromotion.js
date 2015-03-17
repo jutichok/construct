@@ -51,7 +51,6 @@ function doQuery(pageval,sortval,orderval,idpro) {
 			var pagenow = $xml.find("pageNow:first").text();
 			var strNewOrder = $xml.find("strNewOrder:first").text();
 			var nextpage = parseInt(pagenow)+1;
-			
 			var html;
 			$xml.find("row").each(function(d){
 				html = "<tr>";
@@ -59,7 +58,7 @@ function doQuery(pageval,sortval,orderval,idpro) {
 				html += "<td>"+ $(this).find("prodname").text() +"</td>";
 				html += "<td>"+ $(this).find("price").text() +"</td>";
 				html += "<td>"+ $(this).find("qty").text() +"</td>";
-				html += "<td><a href=/construct/admin/deleteitempromotion/deleteitempromotion.php?id="+$(this).find("ipromoid").text()+">Delete</a></td>";
+				html += "<td><a href=/construct/admin/deleteitempromotion/deleteitempromotion.php?id="+$(this).find("ipromoid").text()+"&idpro="+idpro+">Delete</a></td>";
 				html += "</tr>";
 				$("#tableuser").find("tbody").append(html);
 			});
