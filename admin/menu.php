@@ -23,16 +23,8 @@
                     <li id="purchase">
                         <a href="/construct/admin/Purchase/Purchase.php"><i class="fa fa-exchange"></i> Purchase</a>
                     </li>
-					<li id="collectt">
-						<a href="javascript:;" data-toggle="collapse" data-target="#collect"><i class="fa fa-picture-o"></i> Collection <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="collect" class="collapse">
-                            <li>
-                                <a href="/construct/admin/collection/collection.php"><i class="fa fa-database"></i> Manage Collection</a>
-                            </li>
-                            <li>
-                                <a href="/construct/admin/collectionType/collectionType.php"><i class="fa fa-database"></i> Collection Type</a>
-                            </li>
-                        </ul>
+					<li id="promo">
+                        <a href="/construct/admin/promotion/promotion.php"><i class="fa fa-star"></i> Promotion</a>
                     </li>
                     <li>
 						<a href="javascript:;" data-toggle="collapse" data-target="#report"><i class="fa fa-folder-open"></i> Report <i class="fa fa-fw fa-caret-down"></i></a>
@@ -64,5 +56,6 @@ if("<?php echo $_SESSION["role"]?>"=="employee"){
 	$('#targettranac').css('display','none');
 	$('#targetpurchase').css('display','none');
 	$('#collectt').css('display','none');
+	$('#promo').css('display','none');
 }
 </script>
