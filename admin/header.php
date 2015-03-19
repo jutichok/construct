@@ -53,7 +53,7 @@
                     </ul>
                 </li>
             </ul>
-		<script>
+		<script type="javascript">
 		if($('.noti_bubble').html()=="")
 		{
 			$('.noti_bubble').remove();

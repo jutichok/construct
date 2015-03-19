@@ -25,7 +25,7 @@ if(isset($_SESSION["username"])=="")
     <title>Administrator Page</title>
 	
 	<!--Page CSS -->
-	<link href="Promotion.css" rel="stylesheet"/>
+	<link href="promotion.css" rel="stylesheet"/>
 	
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -53,7 +53,7 @@ if(isset($_SESSION["username"])=="")
     <script src="../js/bootstrap.min.js"></script>
 	
 	<!-- js -->
-	<script type="text/javascript" src="Promotion.js"></script>
+	<script type="text/javascript" src="promotion.js"></script>
 	
 </head>
 
